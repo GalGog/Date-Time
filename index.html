@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+</head>
+<div ng-app="testMod" ng-controller="testCtrl">
+    <p>Basic Mode: {{date | date:'yyyy/MM/dd HH:mm a'}}</p>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <time-date-picker ng-model="date"></time-date-picker>
+        </div>
+    </div>
+    <p>Full Mode: {{date | date:'yyyy/MM/dd HH:mm a'}}</p>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <time-date-picker ng-model="date" data-display-mode="full"></time-date-picker>
+        </div>
+    </div>
+    <p>Start on Time, With 24 Hour: {{date | date:'yyyy/MM/dd HH:mm a'}}</p>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <time-date-picker ng-model="date" default-mode="time" display-twentyfour="true"></time-date-picker>
+        </div>
+    </div>
+    <p>Time Only: {{date | date:'yyyy/MM/dd HH:mm a'}}</p>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <time-date-picker ng-model="date" display-mode="time"></time-date-picker>
+        </div>
+    </div>
+    <p>Date Only: {{date | date:'yyyy/MM/dd HH:mm a'}}</p>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <time-date-picker ng-model="date" display-mode="date"></time-date-picker>
+        </div>
+    </div>
+    <script type="text/ng-template" id="time-date.tpl">
+        <div class="time-date" ng-class="modeClass()">
+            <div class="display" ng-click="modeSwitch()">
+                <div class="title">{{display.title()}}</div>
+                <div class="content">
+                    <div class="super-title">{{display.super()}}</div>
+                    <div class="main-title" ng-bind-html="display.main()"></div>
+                    <div class="sub-title">{{display.sub()}}</div>
+                </div>
+            </div>
+            <div class="control">
+                <div class="full-title">{{display.fullTitle()}}</div>
+                <div class="slider">
+                    <div class="date-control">
+                        <div class="title"><span class="month-part">{{date | date:'MMMM'}}
+                <select ng-model="calendar._month" ng-change="calendar.monthChange()" ng-options="calendar._months.indexOf(month) as month for month in calendar._months"></select></span>
+                            <input class="year-part" ng-model="calendar._year" ng-change="calendar.monthChange()" type="number"/>
+                        </div>
+                        <div class="headers">
+                            <div class="day-cell">S</div>
+                            <div class="day-cell">M</div>
+                            <div class="day-cell">T</div>
+                            <div class="day-cell">W</div>
+                            <div class="day-cell">T</div>
+                            <div class="day-cell">F</div>
+                            <div class="day-cell">S</div>
+                        </div>
+                        <div class="days">
+                            <div class="day-cell" ng-style="{'margin-left': calendar.offsetMargin()}" ng-class="calendar.class(1)" ng-show="calendar.isVisible(1)" ng-click="calendar.select(1)">1</div>
+                            <div class="day-cell" ng-class="calendar.class(2)" ng-show="calendar.isVisible(2)" ng-click="calendar.select(2)">2</div>
+                            <div class="day-cell" ng-class="calendar.class(3)" ng-show="calendar.isVisible(3)" ng-click="calendar.select(3)">3</div>
+                            <div class="day-cell" ng-class="calendar.class(4)" ng-show="calendar.isVisible(4)" ng-click="calendar.select(4)">4</div>
+                            <div class="day-cell" ng-class="calendar.class(5)" ng-show="calendar.isVisible(5)" ng-click="calendar.select(5)">5</div>
+                            <div class="day-cell" ng-class="calendar.class(6)" ng-show="calendar.isVisible(6)" ng-click="calendar.select(6)">6</div>
+                            <div class="day-cell" ng-class="calendar.class(7)" ng-show="calendar.isVisible(7)" ng-click="calendar.select(7)">7</div>
+                            <div class="day-cell" ng-class="calendar.class(8)" ng-show="calendar.isVisible(8)" ng-click="calendar.select(8)">8</div>
+                            <div class="day-cell" ng-class="calendar.class(9)" ng-show="calendar.isVisible(9)" ng-click="calendar.select(9)">9</div>
+                            <div class="day-cell" ng-class="calendar.class(10)" ng-show="calendar.isVisible(10)" ng-click="calendar.select(10)">10</div>
+                            <div class="day-cell" ng-class="calendar.class(11)" ng-show="calendar.isVisible(11)" ng-click="calendar.select(11)">11</div>
+                            <div class="day-cell" ng-class="calendar.class(12)" ng-show="calendar.isVisible(12)" ng-click="calendar.select(12)">12</div>
+                            <div class="day-cell" ng-class="calendar.class(13)" ng-show="calendar.isVisible(13)" ng-click="calendar.select(13)">13</div>
+                            <div class="day-cell" ng-class="calendar.class(14)" ng-show="calendar.isVisible(14)" ng-click="calendar.select(14)">14</div>
+                            <div class="day-cell" ng-class="calendar.class(15)" ng-show="calendar.isVisible(15)" ng-click="calendar.select(15)">15</div>
+                            <div class="day-cell" ng-class="calendar.class(16)" ng-show="calendar.isVisible(16)" ng-click="calendar.select(16)">16</div>
+                            <div class="day-cell" ng-class="calendar.class(17)" ng-show="calendar.isVisible(17)" ng-click="calendar.select(17)">17</div>
+                            <div class="day-cell" ng-class="calendar.class(18)" ng-show="calendar.isVisible(18)" ng-click="calendar.select(18)">18</div>
+                            <div class="day-cell" ng-class="calendar.class(19)" ng-show="calendar.isVisible(19)" ng-click="calendar.select(19)">19</div>
+                            <div class="day-cell" ng-class="calendar.class(20)" ng-show="calendar.isVisible(20)" ng-click="calendar.select(20)">20</div>
+                            <div class="day-cell" ng-class="calendar.class(21)" ng-show="calendar.isVisible(21)" ng-click="calendar.select(21)">21</div>
+                            <div class="day-cell" ng-class="calendar.class(22)" ng-show="calendar.isVisible(22)" ng-click="calendar.select(22)">22</div>
+                            <div class="day-cell" ng-class="calendar.class(23)" ng-show="calendar.isVisible(23)" ng-click="calendar.select(23)">23</div>
+                            <div class="day-cell" ng-class="calendar.class(24)" ng-show="calendar.isVisible(24)" ng-click="calendar.select(24)">24</div>
+                            <div class="day-cell" ng-class="calendar.class(25)" ng-show="calendar.isVisible(25)" ng-click="calendar.select(25)">25</div>
+                            <div class="day-cell" ng-class="calendar.class(26)" ng-show="calendar.isVisible(26)" ng-click="calendar.select(26)">26</div>
+                            <div class="day-cell" ng-class="calendar.class(27)" ng-show="calendar.isVisible(27)" ng-click="calendar.select(27)">27</div>
+                            <div class="day-cell" ng-class="calendar.class(28)" ng-show="calendar.isVisible(28)" ng-click="calendar.select(28)">28</div>
+                            <div class="day-cell" ng-class="calendar.class(29)" ng-show="calendar.isVisible(29)" ng-click="calendar.select(29)">29</div>
+                            <div class="day-cell" ng-class="calendar.class(30)" ng-show="calendar.isVisible(30)" ng-click="calendar.select(30)">30</div>
+                            <div class="day-cell" ng-class="calendar.class(31)" ng-show="calendar.isVisible(31)" ng-click="calendar.select(31)">31</div>
+                        </div>
+                    </div>
+                    <button class="button btn btn-link switch-control" ng-click="modeSwitch()" type="button"><i class="fa fa-clock-o"></i><i class="fa fa-calendar"></i><span class="visuallyhidden">{{modeSwitchText()}}</span></button>
+                    <div class="time-control" ng-if="_hours24">
+                        <div class="time-inputs">
+                            <input type="number" min="0" max="23" ng-model="clock._hours"/><a class="button hours up" ng-click="clock._incHours(1)"><i class="fa fa-caret-up"></i></a><a class="button hours down" ng-click="clock._incHours(-1)"><i class="fa fa-caret-down"></i></a>
+                            <input type="number" min="0" max="59" ng-model="clock._minutes"/><a class="button minutes up" ng-click="clock._incMinutes(1)"><i class="fa fa-caret-up"></i></a><a class="button minutes down" ng-click="clock._incMinutes(-1)"><i class="fa fa-caret-down"></i></a>
+                        </div>
+                    </div>
+                    <div class="time-control" ng-if="!_hours24">
+                        <div class="clock">
+                            <div class="clock-face">
+                                <div class="center"></div>
+                                <div class="hand" ng-click="clock.setHour(1)" ng-class="{'selected': clock._hour() == 1}">1</div>
+                                <div class="hand" ng-click="clock.setHour(2)" ng-class="{'selected': clock._hour() == 2}">2</div>
+                                <div class="hand" ng-click="clock.setHour(3)" ng-class="{'selected': clock._hour() == 3}">3</div>
+                                <div class="hand" ng-click="clock.setHour(4)" ng-class="{'selected': clock._hour() == 4}">4</div>
+                                <div class="hand" ng-click="clock.setHour(5)" ng-class="{'selected': clock._hour() == 5}">5</div>
+                                <div class="hand" ng-click="clock.setHour(6)" ng-class="{'selected': clock._hour() == 6}">6</div>
+                                <div class="hand" ng-click="clock.setHour(7)" ng-class="{'selected': clock._hour() == 7}">7</div>
+                                <div class="hand" ng-click="clock.setHour(8)" ng-class="{'selected': clock._hour() == 8}">8</div>
+                                <div class="hand" ng-click="clock.setHour(9)" ng-class="{'selected': clock._hour() == 9}">9</div>
+                                <div class="hand" ng-click="clock.setHour(10)" ng-class="{'selected': clock._hour() == 10}">10</div>
+                                <div class="hand" ng-click="clock.setHour(11)" ng-class="{'selected': clock._hour() == 11}">11</div>
+                                <div class="hand" ng-click="clock.setHour(12)" ng-class="{'selected': clock._hour() == 12}">12</div>
+                            </div>
+                        </div>
+                        <div class="buttons">
+                            <button class="btn btn-link pull-left" ng-click="clock.setAM(true)" ng-class="{'active': clock.isAM()}" type="button">AM</button><span>
+                <label>minutes</label>
+                <input type="number" min="0" max="59" ng-model="clock._minutes"/></span>
+                            <button class="btn btn-link pull-right" ng-click="clock.setAM(false)" ng-class="{'active': !clock.isAM()}" type="button">PM</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="buttons">
+                <button class="btn btn-link" ng-click="setNow()" type="button">Now</button>
+                <button class="btn btn-link" ng-click="cancel()" type="button">Cancel</button>
+                <button class="btn btn-link" ng-click="save()" type="button">OK</button>
+            </div>
+        </div>
+    </script>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular-animate.min.js"></script>
+<body>
+
+</body>
+</html>
