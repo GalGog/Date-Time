@@ -6,7 +6,7 @@
         '$sce',
         function($filter,
                  $sce) {
-            var _dateFilter;
+            let _dateFilter;
             _dateFilter = $filter('date');
             return {restrict: 'AE',
                 replace: true,
@@ -17,7 +17,7 @@
                 templateUrl: 'time-date.tpl',
                 link: function(scope, element, attrs, ngModel)
                 {
-                    var ref;
+                    let ref;
                     scope._mode = (ref = attrs.defaultMode) !== null ? ref : 'date';
                     scope._displayMode = attrs.displayMode;
                     scope._hours24 = (attrs.displayTwentyfour !==null) && attrs.displayTwentyfour;
@@ -38,7 +38,7 @@
                 controller: [
                     '$scope',
                     function(scope) {
-                        var i;
+                        let i;
                         scope.date = new Date();
                         scope.display = {
                             fullTitle: function() {
@@ -82,7 +82,7 @@
                             _month: 0,
                             _year: 0,
                             _months: (function() {
-                                var j,
+                                let j,
                                     results;
                                 results = [];
                                 for (i = j = 0; j <= 11; i = ++j) {if (window.CP.shouldStopExecution(1)){break;}
@@ -152,7 +152,7 @@
                                         this._minutes + inc));
                             },
                             _hour: function() {
-                                var _h;
+                                let _h;
                                 _h = scope.date.getHours();
                                 _h = _h % 12;
                                 if (_h === 0) {
@@ -215,7 +215,7 @@
                             }
                         };
                         scope.modeSwitch = function() {
-                            var ref;
+                            let ref;
                             return scope._mode = (ref = scope._displayMode) !== null ? ref : scope._mode === 'date' ? 'time' : 'date';
                         };
                         return scope.modeSwitchText = function() {
